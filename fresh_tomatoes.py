@@ -9,7 +9,7 @@ main_page_head = '''
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Fresh Tomatoes!</title>
+    <title>MyFav Movies.com</title>
 
     <!-- Bootstrap 3 -->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
@@ -19,11 +19,12 @@ main_page_head = '''
     <style type="text/css" media="screen">
         body {
             padding-top: 80px;
+            background-color: #f5b9c2;
         }
         #trailer .modal-dialog {
             margin-top: 200px;
-            width: 640px;
-            height: 480px;
+            width: 1280px;
+            height: 960px;
         }
         .hanging-close {
             position: absolute;
@@ -40,7 +41,7 @@ main_page_head = '''
             padding-top: 20px;
         }
         .movie-tile:hover {
-            background-color: #EEE;
+            background-color: #f2a7b2;
             cursor: pointer;
         }
         .scale-media {
@@ -55,6 +56,18 @@ main_page_head = '''
             left: 0;
             top: 0;
             background-color: white;
+        }
+        .navbar-brand {
+            font-family: "Georgia";
+            font-weight: bold;
+            font-size: 25px;
+            padding-left: 460px;
+            padding-right: 460px;
+
+        }
+        #title {
+            font-family: "Georgia";
+            font-weight: bold;
         }
     </style>
     <script type="text/javascript" charset="utf-8">
@@ -107,7 +120,7 @@ main_page_content = '''
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+            <a class="navbar-brand" href="#">MyFavMovies.Com</a>
           </div>
         </div>
       </div>
@@ -122,9 +135,12 @@ main_page_content = '''
 
 # A single movie entry html template
 movie_tile_content = '''
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
+<div id="title" class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
     <img src="{poster_image_url}" width="220" height="342">
-    <h2>{movie_title}</h2>
+    <h2>
+      <b>{movie_title}</b>
+    </h2>
+    <h5>{movie_storyline}</h5>
 </div>
 '''
 
@@ -144,6 +160,7 @@ def create_movie_tiles_content(movies):
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
             movie_title=movie.title,
+            movie_storyline=movie.storyline,
             poster_image_url=movie.poster_image_url,
             trailer_youtube_id=trailer_youtube_id
         )
