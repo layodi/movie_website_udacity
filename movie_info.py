@@ -51,7 +51,11 @@ ghostbusters = media.Movie("Ghostbusters",
                            "http://cdn.collider.com/wp-content/uploads/2015/12/ghostbusters-kristen-wiig-poster.jpg",
                            "https://www.youtube.com/watch?v=w3ugHP-yZXw")
 
+# a list of all movie instances
 movies = [atomic_blonde, baby_driver, deadpool, emoji_movie, ghostbusters,
           independence_day, pitch_perfect_three, sausage_party, suicide_squad,
           warcraft]
+
+# calls function that creates/generates the html output page using the movie
+# instances in the movies list
 fresh_tomatoes.open_movies_page(movies)
